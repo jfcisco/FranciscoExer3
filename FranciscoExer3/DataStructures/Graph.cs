@@ -29,22 +29,46 @@ namespace FranciscoExer3.DataStructures
             // int variable in the tuple represents the order which the vertex was visited.
             // For example, 0 = not yet visited
             //              1 = first to be visited
-            (T, int)[] verticesInScope = new (T, int)[Order];
-            int countOfVerticesVisited = 0;
 
-            // Setup verticesInscope with initial values
-            for (var i = 0; i < Order; i++)
+            T[] verticesInOrderVisited = new T[Order];
+            int numberOfVerticesVisited = 0;
+
+            // TODO: Implement own dictionary (probs using BST)
+            Dictionary<T, bool> visited = new Dictionary<T, bool>();
+
+            foreach (T vertex in Vertices)
             {
-                verticesInScope[i] = (Vertices[i], 0);
+                visited[vertex] = false;
             }
 
             // TODO: Use own stack implementation
-            // Stack<GraphVertex<T>> stack = stack.Push()
+            Stack<T> stack = new Stack<T>();
+            stack.Push(Vertices[0]);
 
+            while (stack.Count > 0)
+            {
+                T vertex = stack.Pop();
 
+                if (!visited[vertex])
+                {
+                    // Visit the vertex
+                    verticesInOrderVisited[numberOfVerticesVisited] = vertex;
+                    numberOfVerticesVisited++;
+                    visited[vertex] = true;
 
+                    // Push adjacent, unvisited vertices to the stack
+                    foreach (T adjacentVertex in AdjacencyLists[vertex])
+                    {
+                        if (!visited[adjacentVertex])
+                        {
+                            // Push adjacentVertex to the stack
+                            stack.Push(adjacentVertex);
+                        }
+                    }
+                }
+            }
 
-            throw new NotImplementedException();
+            return verticesInOrderVisited;
         }
 
         public T[] PerformBreadthFirstTraversal()
