@@ -28,29 +28,15 @@ namespace FranciscoExer3.Tests
             Assert.Equal(new int[] { 1, 3, 5, 6, 4, 2 }, resultOfDFSTraversal);
         }
 
-        //    [Fact]
-        //    public void BreadthFirstTraversalIsCorrect()
-        //    {
-        //        // Use example graph in the book
-        //        int[] vertices = { 1, 2, 3, 4, 5, 6 };
+        [Fact]
+        public void BreadthFirstTraversalIsCorrect()
+        {
+            Graph<int> graph = LoadSampleGraph();
 
-        //        // Manually setup adjacency list 
-        //        byte[][] adjacencyMatrix =
-        //        {           //   1  2  3  4  5  6
-        //            new byte[] { 0, 1, 1, 0, 0, 0 },
-        //            new byte[] { 1, 0, 1, 1, 0, 0 },
-        //            new byte[] { 1, 1, 0, 0, 1, 0 },
-        //            new byte[] { 0, 1, 0, 0, 1, 1 },
-        //            new byte[] { 0, 0, 1, 1, 0, 1 },
-        //            new byte[] { 0, 0, 0, 1, 1, 0 }
-        //        };
+            int[] resultOfBFSTraversal = graph.PerformBreadthFirstTraversal();
 
-        //        Graph<int> graph = new Graph<int>(vertices) { AdjacencyMatrix = adjacencyMatrix };
-
-        //        int[] resultOfBFSTraversal = graph.PerformBreadthFirstTraversal();
-
-        //        Assert.Equal(new int[] { 1, 2, 3, 4, 5, 6 }, resultOfBFSTraversal);
-        //    }
+            Assert.Equal(new int[] { 1, 2, 3, 4, 5, 6 }, resultOfBFSTraversal);
+        }
 
 
         // Test Helper Methods
@@ -61,12 +47,12 @@ namespace FranciscoExer3.Tests
             Graph<int> sampleGraph = new Graph<int>(vertexValues);
 
             // Setup adjacency lists for each vertex 
-            sampleGraph.AdjacencyLists[1] = new LinkedList<int>(new int[] { 0, 1, 1, 0, 0, 0 });
-            sampleGraph.AdjacencyLists[2] = new LinkedList<int>(new int[] { 1, 0, 1, 1, 0, 0 });
-            sampleGraph.AdjacencyLists[3] = new LinkedList<int>(new int[] { 1, 1, 0, 0, 1, 0 });
-            sampleGraph.AdjacencyLists[4] = new LinkedList<int>(new int[] { 0, 1, 0, 0, 1, 1 });
-            sampleGraph.AdjacencyLists[5] = new LinkedList<int>(new int[] { 0, 0, 1, 1, 0, 1 });
-            sampleGraph.AdjacencyLists[6] = new LinkedList<int>(new int[] { 0, 0, 0, 1, 1, 0 });
+            sampleGraph.AdjacencyLists[1] = new LinkedList<int>(new int[] { 2, 3 });
+            sampleGraph.AdjacencyLists[2] = new LinkedList<int>(new int[] { 1, 3, 4 });
+            sampleGraph.AdjacencyLists[3] = new LinkedList<int>(new int[] { 1, 2, 5 });
+            sampleGraph.AdjacencyLists[4] = new LinkedList<int>(new int[] { 2, 5, 6 });
+            sampleGraph.AdjacencyLists[5] = new LinkedList<int>(new int[] { 3, 4, 6, });
+            sampleGraph.AdjacencyLists[6] = new LinkedList<int>(new int[] { 4, 5 });
 
             return sampleGraph;
         }
