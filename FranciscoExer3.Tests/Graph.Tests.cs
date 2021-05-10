@@ -8,7 +8,7 @@ namespace FranciscoExer3.Tests
     public class GraphTests
     {
         [Fact]
-        public void CanInstantiateGraph()
+        public void InstantiateGraph_Success()
         {
             int[] vertices = { 1, 2, 3 };
 
@@ -18,9 +18,8 @@ namespace FranciscoExer3.Tests
         }
 
         [Fact]
-        public void DepthFirstTraversalIsCorrect()
+        public void PerformDepthFirstTraversal_Success()
         {
-            // Use example graph in the book
             Graph<int> graph = LoadSampleGraph();
 
             int[] resultOfDFSTraversal = graph.PerformDepthFirstTraversal();
@@ -29,7 +28,7 @@ namespace FranciscoExer3.Tests
         }
 
         [Fact]
-        public void BreadthFirstTraversalIsCorrect()
+        public void PerformBreadthFirstTraversal_Success()
         {
             Graph<int> graph = LoadSampleGraph();
 
@@ -38,6 +37,53 @@ namespace FranciscoExer3.Tests
             Assert.Equal(new int[] { 1, 2, 3, 4, 5, 6 }, resultOfBFSTraversal);
         }
 
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        [InlineData(6)]
+        public void DepthFirstSearch_Success(int value)
+        {
+            Graph<int> graph = LoadSampleGraph();
+            bool result = graph.SearchDepthFirst(value);
+            Assert.True(result);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(7)]
+        public void DepthFirstSeach_Failure(int value)
+        {
+            Graph<int> graph = LoadSampleGraph();
+            bool result = graph.SearchDepthFirst(value);
+            Assert.False(result);
+        }
+
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        [InlineData(3)]
+        [InlineData(4)]
+        [InlineData(5)]
+        [InlineData(6)]
+        public void BreadthFirstSearch_Success(int value)
+        {
+            Graph<int> graph = LoadSampleGraph();
+            bool result = graph.SearchBreadthFirst(value);
+            Assert.True(result);
+        }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(7)]
+        public void BreadthFirstSeach_Failure(int value)
+        {
+            Graph<int> graph = LoadSampleGraph();
+            bool result = graph.SearchBreadthFirst(value);
+            Assert.False(result);
+        }
 
         // Test Helper Methods
         private Graph<int> LoadSampleGraph()
