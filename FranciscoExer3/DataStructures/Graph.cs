@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FranciscoExer3.DataStructures
 {
@@ -10,7 +9,6 @@ namespace FranciscoExer3.DataStructures
     public class Graph<T> where T : IComparable<T>
     {
         public readonly T[] Vertices;
-        // Replace with HashTable implementation
         public readonly GraphAdjacencyLists<T> AdjacencyLists;
         private readonly int Order;
 
@@ -19,7 +17,7 @@ namespace FranciscoExer3.DataStructures
         {
             Vertices = vertices;
             Order = vertices.Length;
-            AdjacencyLists = new GraphAdjacencyLists<T>();
+            AdjacencyLists = new GraphAdjacencyLists<T>(vertices);
         }
 
         public T[] PerformDepthFirstTraversal()
@@ -33,8 +31,8 @@ namespace FranciscoExer3.DataStructures
             T[] verticesInOrderVisited = new T[Order];
             int numberOfVerticesVisited = 0;
 
-            // TODO: Implement own dictionary (probs using BST)
-            Dictionary<T, bool> visited = new Dictionary<T, bool>();
+            // Initialize all vertices to "not visited" status
+            Dictionary<T, bool> visited = new Dictionary<T, bool>(Vertices);
 
             foreach (T vertex in Vertices)
             {
