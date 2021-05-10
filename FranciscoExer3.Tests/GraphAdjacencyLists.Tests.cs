@@ -32,6 +32,22 @@ namespace FranciscoExer3.Tests
             Assert.Equal(testAdjacencyList, testLists[vertex]);
         }
 
+        [Fact]
+        public void CanUpdateAKey()
+        {
+            GraphAdjacencyLists<int> testList  = new GraphAdjacencyLists<int>(new int[] { 1, 2, 3 });
+
+            testList[1] = new LinkedList<int>(new int[] { 2, 3 });
+            testList[2] = new LinkedList<int>(new int[] { 1 });
+            testList[3] = new LinkedList<int>(new int[] { 1 });
+
+            testList[1] = new LinkedList<int>();
+
+            Assert.Equal(new LinkedList<int>(), testList[1]);
+            Assert.Equal(new LinkedList<int>(new int[] { 1 }), testList[2]);
+            Assert.Equal(new LinkedList<int>(new int[] { 1 }), testList[3]);
+        }
+
         [Theory]
         [InlineData(new int[] { 1, 2, 3, 5 }, 6)]
         [InlineData(new int[] { 1, 2, 3, 5 }, 0)]
