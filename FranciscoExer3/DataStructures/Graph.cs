@@ -1,4 +1,5 @@
 ﻿using System;
+// TODO: Remove dependence on .NET Generic Collections
 using System.Collections.Generic;
 
 namespace FranciscoExer3.DataStructures
@@ -22,12 +23,7 @@ namespace FranciscoExer3.DataStructures
 
         public T[] PerformDepthFirstTraversal()
         {
-            // Declare a variable to keep track of vertices that were already visited
-
-            // int variable in the tuple represents the order which the vertex was visited.
-            // For example, 0 = not yet visited
-            //              1 = first to be visited
-
+            // Declare a variable to keep track of the order the vertices were visited.
             T[] verticesInOrderVisited = new T[Order];
             int numberOfVerticesVisited = 0;
 
@@ -71,7 +67,46 @@ namespace FranciscoExer3.DataStructures
 
         public T[] PerformBreadthFirstTraversal()
         {
-            throw new NotImplementedException();
+            // Declare a variable to keep track of the order the vertices were visited.
+            T[] verticesInOrderVisited = new T[Order];
+            int numberOfVerticesVisited = 0;
+
+            // Initialize all vertices to "not visited" status
+            Dictionary<T, bool> visited = new Dictionary<T, bool>(Vertices);
+
+            foreach (T vertex in Vertices)
+            {
+                visited[vertex] = false;
+            }
+
+            // TODO: Use own queue implementation
+            Queue<T> queue = new Queue<T>();
+            queue.Enqueue(Vertices[0]);
+
+            while (queue.Count > 0)
+            {
+                T vertex = queue.Dequeue();
+
+                if (!visited[vertex])
+                {
+                    // Visit the vertex
+                    verticesInOrderVisited[numberOfVerticesVisited] = vertex;
+                    numberOfVerticesVisited++;
+                    visited[vertex] = true;
+
+                    // Push adjacent, unvisited vertices to the stack
+                    foreach (T adjacentVertex in AdjacencyLists[vertex])
+                    {
+                        if (!visited[adjacentVertex])
+                        {
+                            // Push adjacentVertex to the stack
+                            queue.Enqueue(adjacentVertex);
+                        }
+                    }
+                }
+            }
+
+            return verticesInOrderVisited;
         }
 
         public bool SearchDepthFirst(T value)
