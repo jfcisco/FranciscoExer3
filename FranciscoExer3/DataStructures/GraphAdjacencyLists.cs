@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FranciscoExer3.DataStructures
 {
@@ -9,7 +7,7 @@ namespace FranciscoExer3.DataStructures
     /// </summary>
     /// <remarks>Implemented as a binary search tree.</remarks>
     /// <typeparam name="T">Type of the graph's vertex</typeparam>
-    public class GraphAdjacencyLists<T> : Dictionary<T, LinkedList<T>> where T : IComparable<T>
+    public class GraphAdjacencyLists<T> : Dictionary<T, T[]> where T : IComparable<T>
     {
         public GraphAdjacencyLists(T[] vertices) : base(vertices) { }
     }
