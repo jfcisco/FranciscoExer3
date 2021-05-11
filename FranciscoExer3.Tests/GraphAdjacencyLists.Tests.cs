@@ -26,10 +26,8 @@ namespace FranciscoExer3.Tests
         {
             GraphAdjacencyLists<char> testLists = new GraphAdjacencyLists<char>(new char[] { 'A', 'B', 'C' });
 
-            LinkedList<char> testAdjacencyList = new LinkedList<char>(adjacentVertices);
-
-            testLists[vertex] = testAdjacencyList;
-            Assert.Equal(testAdjacencyList, testLists[vertex]);
+            testLists[vertex] = adjacentVertices;
+            Assert.Equal(adjacentVertices, testLists[vertex]);
         }
 
         [Fact]
@@ -37,15 +35,15 @@ namespace FranciscoExer3.Tests
         {
             GraphAdjacencyLists<int> testList  = new GraphAdjacencyLists<int>(new int[] { 1, 2, 3 });
 
-            testList[1] = new LinkedList<int>(new int[] { 2, 3 });
-            testList[2] = new LinkedList<int>(new int[] { 1 });
-            testList[3] = new LinkedList<int>(new int[] { 1 });
+            testList[1] = new int[] { 2, 3 };
+            testList[2] = new int[] { 1 };
+            testList[3] = new int[] { 1 };
 
-            testList[1] = new LinkedList<int>();
+            testList[1] = new int[] { };
 
-            Assert.Equal(new LinkedList<int>(), testList[1]);
-            Assert.Equal(new LinkedList<int>(new int[] { 1 }), testList[2]);
-            Assert.Equal(new LinkedList<int>(new int[] { 1 }), testList[3]);
+            Assert.Equal(new int[] { }, testList[1]);
+            Assert.Equal(new int[] { 1 }, testList[2]);
+            Assert.Equal(new int[] { 1 }, testList[3]);
         }
 
         [Theory]

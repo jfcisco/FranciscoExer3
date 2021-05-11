@@ -1,7 +1,5 @@
 using Xunit;
 using FranciscoExer3.DataStructures;
-// TODO: Repalce with own implementation of collections
-using System.Collections.Generic;
 
 namespace FranciscoExer3.Tests
 {
@@ -93,12 +91,12 @@ namespace FranciscoExer3.Tests
             Graph<int> sampleGraph = new Graph<int>(vertexValues);
 
             // Setup adjacency lists for each vertex 
-            sampleGraph.AdjacencyLists[1] = new LinkedList<int>(new int[] { 2, 3 });
-            sampleGraph.AdjacencyLists[2] = new LinkedList<int>(new int[] { 1, 3, 4 });
-            sampleGraph.AdjacencyLists[3] = new LinkedList<int>(new int[] { 1, 2, 5 });
-            sampleGraph.AdjacencyLists[4] = new LinkedList<int>(new int[] { 2, 5, 6 });
-            sampleGraph.AdjacencyLists[5] = new LinkedList<int>(new int[] { 3, 4, 6, });
-            sampleGraph.AdjacencyLists[6] = new LinkedList<int>(new int[] { 4, 5 });
+            sampleGraph.AdjacencyLists[1] = new int[] { 2, 3 };
+            sampleGraph.AdjacencyLists[2] = new int[] { 1, 3, 4 };
+            sampleGraph.AdjacencyLists[3] = new int[] { 1, 2, 5 };
+            sampleGraph.AdjacencyLists[4] = new int[] { 2, 5, 6 };
+            sampleGraph.AdjacencyLists[5] = new int[] { 3, 4, 6, };
+            sampleGraph.AdjacencyLists[6] = new int[] { 4, 5 };
 
             return sampleGraph;
         }
