@@ -26,38 +26,10 @@ namespace FranciscoExer3.DataStructures
             T[] verticesInOrderVisited = new T[Order];
             int numberOfVerticesVisited = 0;
 
-            // Initialize all vertices to "not visited" status
-            Dictionary<T, bool> visited = new Dictionary<T, bool>(Vertices);
-
-            foreach (T vertex in Vertices)
+            foreach(T value in DepthFirst)
             {
-                visited[vertex] = false;
-            }
-
-            Stack<T> stack = new Stack<T>();
-            stack.Push(Vertices[0]);
-
-            while (stack.Count > 0)
-            {
-                T vertex = stack.Pop();
-
-                if (!visited[vertex])
-                {
-                    // Visit the vertex
-                    verticesInOrderVisited[numberOfVerticesVisited] = vertex;
-                    numberOfVerticesVisited++;
-                    visited[vertex] = true;
-
-                    // Push adjacent, unvisited vertices to the stack
-                    foreach (T adjacentVertex in AdjacencyLists[vertex])
-                    {
-                        if (!visited[adjacentVertex])
-                        {
-                            // Push adjacentVertex to the stack
-                            stack.Push(adjacentVertex);
-                        }
-                    }
-                }
+                verticesInOrderVisited[numberOfVerticesVisited] = value;
+                numberOfVerticesVisited++;
             }
 
             return verticesInOrderVisited;
@@ -108,7 +80,17 @@ namespace FranciscoExer3.DataStructures
 
         public bool SearchDepthFirst(T value)
         {
-            throw new NotImplementedException();
+            foreach (T vertex in DepthFirst)
+            {
+                // value.CompareTo(vertex) is 0 if both values are the same
+                if (value.CompareTo(vertex) == 0)
+                {
+                    return true;
+                }
+            }
+
+            // If no matches are found, return false
+            return false;
         }
 
         public bool SearchBreadthFirst(T value)
@@ -117,7 +99,7 @@ namespace FranciscoExer3.DataStructures
         }
 
         /// <summary>
-        /// Enumerates the Graph's contents in a depth-first traversal manner.
+        /// Enumerates the Graph's vertices in a depth-first traversal manner.
         /// </summary>
         /// <returns></returns>
         private IEnumerable<T> DepthFirst
@@ -139,7 +121,8 @@ namespace FranciscoExer3.DataStructures
                 {
                     T vertex = stack.Pop();
 
-                    if (!visited[vertex]) { continue; }
+                    // Skip any visited vertices
+                    if (visited[vertex]) { continue; }
                     
                     // Enumerate the vertex and tag as visited
                     yield return vertex;
