@@ -1,5 +1,4 @@
 ﻿using System;
-// TODO: Remove dependence on .NET Generic Collections
 using System.Collections.Generic;
 
 namespace FranciscoExer3.DataStructures
@@ -35,7 +34,6 @@ namespace FranciscoExer3.DataStructures
                 visited[vertex] = false;
             }
 
-            // TODO: Use own stack implementation
             Stack<T> stack = new Stack<T>();
             stack.Push(Vertices[0]);
 
@@ -79,7 +77,6 @@ namespace FranciscoExer3.DataStructures
                 visited[vertex] = false;
             }
 
-            // TODO: Use own queue implementation
             Queue<T> queue = new Queue<T>();
             queue.Enqueue(Vertices[0]);
 
@@ -117,6 +114,48 @@ namespace FranciscoExer3.DataStructures
         public bool SearchBreadthFirst(T value)
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Enumerates the Graph's contents in a depth-first traversal manner.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerable<T> DepthFirst
+        {
+            get
+            {
+                // Initialize all vertices to "not visited" status
+                Dictionary<T, bool> visited = new Dictionary<T, bool>(Vertices);
+
+                foreach (T vertex in Vertices)
+                {
+                    visited[vertex] = false;
+                }
+
+                Stack<T> stack = new Stack<T>();
+                stack.Push(Vertices[0]);
+
+                while (stack.Count > 0)
+                {
+                    T vertex = stack.Pop();
+
+                    if (!visited[vertex]) { continue; }
+                    
+                    // Enumerate the vertex and tag as visited
+                    yield return vertex;
+                    visited[vertex] = true;
+
+                    // Push adjacent, unvisited vertices to the stack
+                    foreach (T adjacentVertex in AdjacencyLists[vertex])
+                    {
+                        if (!visited[adjacentVertex])
+                        {
+                            // Push adjacentVertex to the stack
+                            stack.Push(adjacentVertex);
+                        }
+                    }
+                }
+            }
         }
     }
 }
