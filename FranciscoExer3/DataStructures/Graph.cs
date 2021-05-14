@@ -41,38 +41,10 @@ namespace FranciscoExer3.DataStructures
             T[] verticesInOrderVisited = new T[Order];
             int numberOfVerticesVisited = 0;
 
-            // Initialize all vertices to "not visited" status
-            Dictionary<T, bool> visited = new Dictionary<T, bool>(Vertices);
-
-            foreach (T vertex in Vertices)
+            foreach(T vertex in BreadthFirst)
             {
-                visited[vertex] = false;
-            }
-
-            Queue<T> queue = new Queue<T>();
-            queue.Enqueue(Vertices[0]);
-
-            while (queue.Count > 0)
-            {
-                T vertex = queue.Dequeue();
-
-                if (!visited[vertex])
-                {
-                    // Visit the vertex
-                    verticesInOrderVisited[numberOfVerticesVisited] = vertex;
-                    numberOfVerticesVisited++;
-                    visited[vertex] = true;
-
-                    // Push adjacent, unvisited vertices to the stack
-                    foreach (T adjacentVertex in AdjacencyLists[vertex])
-                    {
-                        if (!visited[adjacentVertex])
-                        {
-                            // Push adjacentVertex to the stack
-                            queue.Enqueue(adjacentVertex);
-                        }
-                    }
-                }
+                verticesInOrderVisited[numberOfVerticesVisited] = vertex;
+                numberOfVerticesVisited++;
             }
 
             return verticesInOrderVisited;
@@ -95,7 +67,17 @@ namespace FranciscoExer3.DataStructures
 
         public bool SearchBreadthFirst(T value)
         {
-            throw new NotImplementedException();
+            foreach(T vertex in BreadthFirst)
+            {
+                // value.CompareTo(vertex) is 0 if both values are the same
+                if (vertex.CompareTo(value) == 0)
+                {
+                    return true;
+                }
+            }
+
+            // Reached when no matches are found
+            return false;
         }
 
         /// <summary>
@@ -135,6 +117,45 @@ namespace FranciscoExer3.DataStructures
                         {
                             // Push adjacentVertex to the stack
                             stack.Push(adjacentVertex);
+                        }
+                    }
+                }
+            }
+        }
+
+        private IEnumerable<T> BreadthFirst
+        {
+            get
+            {
+                // Initialize all vertices to "not visited" status
+                Dictionary<T, bool> visited = new Dictionary<T, bool>(Vertices);
+
+                foreach (T vertex in Vertices)
+                {
+                    visited[vertex] = false;
+                }
+
+                Queue<T> queue = new Queue<T>();
+                queue.Enqueue(Vertices[0]);
+
+                while (queue.Count > 0)
+                {
+                    T vertex = queue.Dequeue();
+
+                    // Skip visited vertices
+                    if (visited[vertex]) { continue; }
+
+                    // Enumerate the vertex
+                    yield return vertex;
+                    visited[vertex] = true;
+
+                    // Push adjacent, unvisited vertices to the stack
+                    foreach (T adjacentVertex in AdjacencyLists[vertex])
+                    {
+                        if (!visited[adjacentVertex])
+                        {
+                            // Push adjacentVertex to the stack
+                            queue.Enqueue(adjacentVertex);
                         }
                     }
                 }
