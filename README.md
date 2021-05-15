@@ -15,4 +15,4 @@ Given two predefined graphs, the program allows the user to perform depth-first 
 	- Choosing [4] searches for the vertex inputted by the user. Use the BFS on Graph 2 and print a message if the vertex is not part of the graph.
 - [ ] [5] Exit
 	- Keep on displaying the menu until the user chooses [5].
-- [ ] Implement the Graph data structure using either an adjaceny matrix or **adjacency list**. Author's note: I'm choosing to do the latter implementation.
+- [X] Implement the Graph data structure using either an adjaceny matrix or **adjacency list**. Author's note: I'm choosing to do the latter implementation.
