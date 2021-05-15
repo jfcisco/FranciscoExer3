@@ -5,8 +5,84 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FranciscoExer3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
+        <!-- Defines a 2 x 3 grid as basis for the user interface -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <!-- Header -->
+        <StackPanel Grid.ColumnSpan="2"
+                    VerticalAlignment="Center"
+                    Orientation="Vertical"
+                    >
+            <TextBlock TextAlignment="Center"
+                        FontSize="24">
+            CMSC 204 Exercise 3: Graphs
+            </TextBlock>
+            <TextBlock TextAlignment="Center" 
+                       FontSize="16"
+                       FontWeight="Light">
+                by Jasper Francisco
+            </TextBlock>
+        </StackPanel>
+        
+        <!-- Output Textbox Section -->
+        <Border Grid.Row="1"
+                Grid.ColumnSpan="2"
+                BorderBrush="Gray"
+                BorderThickness="3"
+                Margin="10 0">
+            <TextBlock x:Name="OutputBox" 
+                       FontSize="16"
+                       Margin="10 5"
+                       d:Text="Sample Ouput"/>
+        </Border>
+        
+        <!-- Buttons -->
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="2"
+                    Grid.Column="0">
+            <Button Content="[1] Perform Depth-First Traversal"
+                    Click="DepthTraversalMenu_Click">
+                <Button.ContextMenu>
+                    <ContextMenu x:Name="MenuDFT">
+                        <MenuItem Header="Graph 1" 
+                                  Click="DepthTraversalGraph1_Click"/>
+                        <MenuItem Header="Graph 2" 
+                                  Click="DepthTraversalGraph2_Click"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+            
+            <Button Content="[2] Perform Breadth-First Traversal"
+                    Click="BreadthTraversalMenu_Click">
+                <Button.ContextMenu>
+                    <ContextMenu x:Name="MenuBFT">
+                        <MenuItem Header="Graph 1" 
+                                  Click="BreadthTraversalGraph1_Click"/>
+                        <MenuItem Header="Graph 2" 
+                                  Click="BreadthTraversalGraph2_Click"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
 
+            <Button Content="[3] Search Graph 1 (DFS)"
+                    Click="SearchGraph1_Click" />
+
+            <Button Content="[4] Search Graph 2 (BFS)"
+                    Click="SearchGraph2_Click" />
+
+            <Button Content="[5] Exit"
+                    Click="Exit_Click" />
+        </StackPanel>
+        <!-- Graph Images -->
     </Grid>
 </Window>
