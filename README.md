@@ -4,8 +4,8 @@ Given two predefined graphs, the program allows the user to perform depth-first 
 
 ## Implementation Status of Requirements
 
-- [~] The program displays a window with a menu of 5 items enumerated below.
-- [ ] [1] Perform Depth First Traversal 
+- [X] The program displays a window with a menu of 5 items enumerated below.
+- [X] [1] Perform Depth First Traversal 
 	- When the user chooses [1], the user is asked which graph he or she wants to traverse. The program then prints out the final order in which the nodes are visited using the Depth First Traversal. Traversal will always start from node A or 0.
 - [ ] [2] Perform Breadth Fist Traversal 
 	- When the user chooses [2], the user is asked which graph he or she wants to traverse. The program then prints out the final order in which the nodes are visited using the Breadth First Traversal. Traversal will always start from node A or 0.
