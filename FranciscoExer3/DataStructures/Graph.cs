@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace FranciscoExer3.DataStructures
 {
@@ -83,8 +82,7 @@ namespace FranciscoExer3.DataStructures
         /// <summary>
         /// Enumerates the Graph's vertices in a depth-first traversal manner.
         /// </summary>
-        /// <returns></returns>
-        private IEnumerable<T> DepthFirst
+        private System.Collections.Generic.IEnumerable<T> DepthFirst
         {
             get
             {
@@ -101,29 +99,40 @@ namespace FranciscoExer3.DataStructures
 
                 while (stack.Count > 0)
                 {
-                    T vertex = stack.Pop();
+                    T currentVertex = stack.Peek();
 
-                    // Skip any visited vertices
-                    if (visited[vertex]) { continue; }
-                    
-                    // Enumerate the vertex and tag as visited
-                    yield return vertex;
-                    visited[vertex] = true;
+                    // Determines if the traversal can go deeper (i.e., current vertex is adjacent to at least 1 unvisited vertex).
+                    bool CanGoDeeper = false;
 
-                    // Push adjacent, unvisited vertices to the stack
-                    foreach (T adjacentVertex in AdjacencyLists[vertex])
+                    if (!visited[currentVertex])
+                    {
+                        // Enumerate the vertex and mark as visited
+                        yield return currentVertex;
+                        visited[currentVertex] = true;
+                    }
+
+                    // Push the first adjacent, unvisited vertex to the stack
+                    foreach (T adjacentVertex in AdjacencyLists[currentVertex])
                     {
                         if (!visited[adjacentVertex])
                         {
-                            // Push adjacentVertex to the stack
                             stack.Push(adjacentVertex);
+                            CanGoDeeper = true;
+                            break;
                         }
                     }
+
+                    // If no adjacent vertices can be visited, pop the stack to go back
+                    if (!CanGoDeeper) { stack.Pop(); }
                 }
             }
         }
 
-        private IEnumerable<T> BreadthFirst
+
+        /// <summary>
+        /// Enumerates the Graph's vertices in a breadth-first traversal manner.
+        /// </summary>
+        private System.Collections.Generic.IEnumerable<T> BreadthFirst
         {
             get
             {
