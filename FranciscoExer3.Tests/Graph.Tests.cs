@@ -22,7 +22,8 @@ namespace FranciscoExer3.Tests
 
             int[] resultOfDFSTraversal = graph.PerformDepthFirstTraversal();
 
-            Assert.Equal(new int[] { 1, 3, 5, 6, 4, 2 }, resultOfDFSTraversal);
+         // Assert.Equal(new int[] { 1, 3, 5, 6, 4, 2 }, resultOfDFSTraversal); // Textbook algorithm
+            Assert.Equal(new int[] { 1, 2, 3, 5, 4, 6 }, resultOfDFSTraversal); // YouTube/Visualgo Algorithm
         }
 
         [Fact]
