@@ -5,7 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FranciscoExer3"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800">
+        Title="MainWindow" Height="650" Width="800"
+        Loaded="InitializeApplication">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Height" Value="50" />
+        </Style>
+    </Window.Resources>
     <Grid>
         <!-- Defines a 2 x 3 grid as basis for the user interface -->
         <Grid.ColumnDefinitions>
@@ -49,9 +56,11 @@
         <!-- Buttons -->
         <StackPanel Orientation="Vertical"
                     Grid.Row="2"
-                    Grid.Column="0">
+                    Grid.Column="0"
+                    VerticalAlignment="Center">
             <Button Content="[1] Perform Depth-First Traversal"
-                    Click="DepthTraversalMenu_Click">
+                    Click="DepthTraversalMenu_Click"
+                    Margin="20 0 20 10">
                 <Button.ContextMenu>
                     <ContextMenu x:Name="MenuDFT">
                         <MenuItem Header="Graph 1" 
@@ -63,7 +72,8 @@
             </Button>
             
             <Button Content="[2] Perform Breadth-First Traversal"
-                    Click="BreadthTraversalMenu_Click">
+                    Click="BreadthTraversalMenu_Click"
+                    Margin="20 10">
                 <Button.ContextMenu>
                     <ContextMenu x:Name="MenuBFT">
                         <MenuItem Header="Graph 1" 
@@ -75,14 +85,30 @@
             </Button>
 
             <Button Content="[3] Search Graph 1 (DFS)"
-                    Click="SearchGraph1_Click" />
+                    Click="SearchGraph1_Click" 
+                    Margin="20 10" />
 
             <Button Content="[4] Search Graph 2 (BFS)"
-                    Click="SearchGraph2_Click" />
+                    Click="SearchGraph2_Click"
+                    Margin="20 10" />
 
             <Button Content="[5] Exit"
-                    Click="Exit_Click" />
+                    Click="Exit_Click" 
+                    Margin="20 10" />
         </StackPanel>
+
         <!-- Graph Images -->
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="2"
+                    Grid.Column="1">
+            <Image Source="Images/Graph1.png"
+                   Width="auto"
+                   Height="200" 
+                   Margin="0 0 0 10"/>
+
+            <Image Source="Images/Graph2.png" 
+                   Width="auto"
+                   Height="200"/>
+        </StackPanel>
     </Grid>
 </Window>
