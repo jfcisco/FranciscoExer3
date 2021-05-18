@@ -71,12 +71,34 @@ namespace FranciscoExer3
 
         private void BreadthTraversalGraph1_Click(object sender, RoutedEventArgs e)
         {
-            // Not yet implemented
+            string result = string.Empty;
+            char[] bftResult = Graph1.PerformBreadthFirstTraversal();
+
+            foreach (char vertex in bftResult)
+            {
+                result += vertex.ToString() + ", ";
+            }
+
+            // Remove the last comma and space from result
+            result = result[0..^2];
+
+            Log($"Breadth-first traversal of Graph 1: {result}");
         }
 
         private void BreadthTraversalGraph2_Click(object sender, RoutedEventArgs e)
         {
-            // Not yet implemented
+            string result = string.Empty;
+            int[] bftResult = Graph2.PerformBreadthFirstTraversal();
+
+            foreach (int vertex in bftResult)
+            {
+                result += vertex.ToString() + ", ";
+            }
+
+            // Remove the last comma and space from result
+            result = result[0..^2];
+
+            Log($"Breadth-first traversal of Graph 2: {result}");
         }
 
         private void SearchGraph1_Click(object sender, RoutedEventArgs e)
@@ -131,6 +153,7 @@ namespace FranciscoExer3
             return graph2;
         }
 
+        // Displays a message to the designated output area
         private void Log(string message)
         {
             OutputBox.Text = message;
