@@ -11,8 +11,8 @@ namespace FranciscoExer3.DataStructures
     internal class Stack<T>
     {
         private int Size = 1;
-        private T[] Data = new T[1];
-        private int Head = 0;
+        private T[] Data = new T[1]; 
+        private int Head = 0; // Index of last pushed + 1
 
         public Stack() { }
 
@@ -71,5 +71,7 @@ namespace FranciscoExer3.DataStructures
             Head--;
             return Data[Head];        
         }
+
+        public T Peek() => Data[Head - 1];
     }
 }
