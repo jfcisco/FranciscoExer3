@@ -84,13 +84,27 @@
                 </Button.ContextMenu>
             </Button>
 
-            <Button Content="[3] Search Graph 1 (DFS)"
-                    Click="SearchGraph1_Click" 
-                    Margin="20 10" />
+            <StackPanel Orientation="Horizontal"
+                        Margin="20 10">
+                <Button Content="[3] Search Graph 1 (DFS)"
+                        Click="SearchGraph1_Click" 
+                        Width="250"/>
+                <TextBox x:Name="Graph1VertexSearch"
+                         Width="100"
+                         FontSize="24"
+                         d:Text="5"/>
+            </StackPanel>
 
-            <Button Content="[4] Search Graph 2 (BFS)"
-                    Click="SearchGraph2_Click"
-                    Margin="20 10" />
+            <StackPanel Orientation="Horizontal"
+                        Margin="20 10" >
+                <Button Content="[4] Search Graph 2 (BFS)"
+                        Width="250"
+                        Click="SearchGraph2_Click" />
+                <TextBox x:Name="Graph2VertexSearch"
+                         Width="100"
+                         FontSize="24"
+                         d:Text="5"/>
+            </StackPanel>
 
             <Button Content="[5] Exit"
                     Click="Exit_Click" 
