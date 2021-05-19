@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using FranciscoExer3.DataStructures;
 
 namespace FranciscoExer3
@@ -64,7 +65,19 @@ namespace FranciscoExer3
 
         private void SearchGraph1_Click(object sender, RoutedEventArgs e)
         {
-            // Not yet implemented
+            if (TryGetSearchInputGraph1(out char vertexToSearch))
+            {
+                bool matchFound = Graph1.SearchDepthFirst(vertexToSearch);
+
+                if (matchFound)
+                {
+                    Log($"The vertex {vertexToSearch} is in Graph 1!");
+                }
+                else
+                {
+                    Log($"The vertex {vertexToSearch} cannot be found in Graph 1.");
+                }
+            }
         }
 
         private void SearchGraph2_Click(object sender, RoutedEventArgs e)
@@ -112,6 +125,34 @@ namespace FranciscoExer3
             graph2.AdjacencyLists[5] = new int[] { };
 
             return graph2;
+        }
+
+        // Gets the vertex to be searched for in Graph 1
+        private bool TryGetSearchInputGraph1(out char result)
+        {
+            try
+            {
+                // Get the first character of the string
+                char userInput = Graph1VertexSearch.Text.Trim().ToUpper()[0];
+                result = userInput;
+                return true;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                Log("Invalid input. Please enter a character.");
+                result = default;
+                return false;
+            }
+            finally
+            {
+                Graph1VertexSearch.Text = string.Empty;
+            }
+        }
+
+        // Gets the vertex to be searched for in Graph 2
+        private bool TryGetSearchInputGraph2(out int result)
+        {
+            throw new NotImplementedException();
         }
 
         // Displays a message to the designated output area

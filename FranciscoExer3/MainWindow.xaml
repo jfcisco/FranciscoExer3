@@ -92,7 +92,8 @@
                 <TextBox x:Name="Graph1VertexSearch"
                          Width="100"
                          FontSize="24"
-                         d:Text="5"/>
+                         d:Text="5"
+                         MaxLength="1"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal"
