@@ -34,32 +34,13 @@ namespace FranciscoExer3
 
         private void DepthTraversalGraph1_Click(object sender, RoutedEventArgs e)
         {
-            string result = string.Empty;
-
-            foreach(char vertex in Graph1.PerformDepthFirstTraversal())
-            {
-                result += vertex + ", ";
-            }
-
-            // Remove the last comma and space from result
-            result = result[0..^2];
-
+            string result = Graph1.PerformDepthFirstTraversal();
             Log($"Depth-first traversal of Graph 1: {result}");
         }
 
         private void DepthTraversalGraph2_Click(object sender, RoutedEventArgs e)
         {
-            string result = string.Empty;
-            int[] dftResult = Graph2.PerformDepthFirstTraversal();
-
-            foreach (int vertex in dftResult)
-            {
-                result += vertex.ToString() + ", ";
-            }
-
-            // Remove the last comma and space from result
-            result = result[0..^2];
-
+            string result = Graph2.PerformDepthFirstTraversal();
             Log($"Depth-first traversal of Graph 2: {result}");
         }
 
@@ -71,33 +52,13 @@ namespace FranciscoExer3
 
         private void BreadthTraversalGraph1_Click(object sender, RoutedEventArgs e)
         {
-            string result = string.Empty;
-            char[] bftResult = Graph1.PerformBreadthFirstTraversal();
-
-            foreach (char vertex in bftResult)
-            {
-                result += vertex.ToString() + ", ";
-            }
-
-            // Remove the last comma and space from result
-            result = result[0..^2];
-
+            string result = Graph1.PerformBreadthFirstTraversal();
             Log($"Breadth-first traversal of Graph 1: {result}");
         }
 
         private void BreadthTraversalGraph2_Click(object sender, RoutedEventArgs e)
         {
-            string result = string.Empty;
-            int[] bftResult = Graph2.PerformBreadthFirstTraversal();
-
-            foreach (int vertex in bftResult)
-            {
-                result += vertex.ToString() + ", ";
-            }
-
-            // Remove the last comma and space from result
-            result = result[0..^2];
-
+            string result = Graph2.PerformBreadthFirstTraversal();
             Log($"Breadth-first traversal of Graph 2: {result}");
         }
 

@@ -19,34 +19,36 @@ namespace FranciscoExer3.DataStructures
             AdjacencyLists = new GraphAdjacencyLists<T>(vertices);
         }
 
-        public T[] PerformDepthFirstTraversal()
+        public string PerformDepthFirstTraversal()
         {
-            // Declare a variable to keep track of the order the vertices were visited.
-            T[] verticesInOrderVisited = new T[Order];
-            int numberOfVerticesVisited = 0;
+            string result = string.Empty;
 
+            // Append each graph vertex to the result string
             foreach(T value in DepthFirst)
             {
-                verticesInOrderVisited[numberOfVerticesVisited] = value;
-                numberOfVerticesVisited++;
+                result += value.ToString() + ", ";
             }
 
-            return verticesInOrderVisited;
+            // Remove the trailing comma and space
+            result = result[..^2];
+
+            return result;
         }
 
-        public T[] PerformBreadthFirstTraversal()
+        public string PerformBreadthFirstTraversal()
         {
-            // Declare a variable to keep track of the order the vertices were visited.
-            T[] verticesInOrderVisited = new T[Order];
-            int numberOfVerticesVisited = 0;
+            string result = string.Empty;
 
-            foreach(T vertex in BreadthFirst)
+            // Append each graph vertex to the result string
+            foreach (T vertex in BreadthFirst)
             {
-                verticesInOrderVisited[numberOfVerticesVisited] = vertex;
-                numberOfVerticesVisited++;
+                result += vertex.ToString() + ", ";
             }
 
-            return verticesInOrderVisited;
+            // Remove the trailing comma and space
+            result = result[..^2];
+
+            return result;
         }
 
         public bool SearchDepthFirst(T value)

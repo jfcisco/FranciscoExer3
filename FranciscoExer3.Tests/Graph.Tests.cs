@@ -20,10 +20,10 @@ namespace FranciscoExer3.Tests
         {
             Graph<int> graph = LoadSampleGraph();
 
-            int[] resultOfDFSTraversal = graph.PerformDepthFirstTraversal();
+            string resultOfDFSTraversal = graph.PerformDepthFirstTraversal();
 
          // Assert.Equal(new int[] { 1, 3, 5, 6, 4, 2 }, resultOfDFSTraversal); // Textbook algorithm
-            Assert.Equal(new int[] { 1, 2, 3, 5, 4, 6 }, resultOfDFSTraversal); // YouTube/Visualgo Algorithm
+            Assert.Equal("1, 2, 3, 5, 4, 6", resultOfDFSTraversal); // YouTube/Visualgo Algorithm
         }
 
         [Fact]
@@ -31,9 +31,9 @@ namespace FranciscoExer3.Tests
         {
             Graph<int> graph = LoadSampleGraph();
 
-            int[] resultOfBFSTraversal = graph.PerformBreadthFirstTraversal();
+            string resultOfBFSTraversal = graph.PerformBreadthFirstTraversal();
 
-            Assert.Equal(new int[] { 1, 2, 3, 4, 5, 6 }, resultOfBFSTraversal);
+            Assert.Equal("1, 2, 3, 4, 5, 6", resultOfBFSTraversal);
         }
 
         [Theory]
