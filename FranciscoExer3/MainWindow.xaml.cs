@@ -82,7 +82,19 @@ namespace FranciscoExer3
 
         private void SearchGraph2_Click(object sender, RoutedEventArgs e)
         {
-            // Not yet implemented
+            if (TryGetSearchInputGraph2(out int vertexToSearch))
+            {
+                bool matchFound = Graph2.SearchBreadthFirst(vertexToSearch);
+
+                if (matchFound)
+                {
+                    Log($"The vertex {vertexToSearch} is in Graph 2!");
+                }
+                else
+                {
+                    Log($"The vertex {vertexToSearch} cannot be found in Graph 2.");
+                }
+            }
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
@@ -133,6 +145,7 @@ namespace FranciscoExer3
             try
             {
                 // Get the first character of the string
+                // Converts lowercase characters to uppercase
                 char userInput = Graph1VertexSearch.Text.Trim().ToUpper()[0];
                 result = userInput;
                 return true;
@@ -152,7 +165,22 @@ namespace FranciscoExer3
         // Gets the vertex to be searched for in Graph 2
         private bool TryGetSearchInputGraph2(out int result)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string userInput = Graph2VertexSearch.Text.Trim();
+                result = int.Parse(userInput);
+                return true;
+            }
+            catch (Exception)
+            {
+                Log("Invalid input. Please enter an integer.");
+                result = default;
+                return false;
+            }
+            finally
+            {
+                Graph2VertexSearch.Text = string.Empty;
+            }
         }
 
         // Displays a message to the designated output area

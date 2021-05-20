@@ -92,7 +92,7 @@
                 <TextBox x:Name="Graph1VertexSearch"
                          Width="100"
                          FontSize="24"
-                         d:Text="5"
+                         d:Text="A"
                          MaxLength="1"/>
             </StackPanel>
 
@@ -104,7 +104,8 @@
                 <TextBox x:Name="Graph2VertexSearch"
                          Width="100"
                          FontSize="24"
-                         d:Text="5"/>
+                         d:Text="5"
+                         MaxLength="1"/>
             </StackPanel>
 
             <Button Content="[5] Exit"
