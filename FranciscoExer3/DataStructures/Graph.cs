@@ -84,6 +84,9 @@ namespace FranciscoExer3.DataStructures
         /// <summary>
         /// Enumerates the Graph's vertices in a depth-first traversal manner.
         /// </summary>
+        /// <remarks>
+        /// Assumption: Uses the depth-first traversal algorithm presented in the Graph Traversals YouTube video and in Visualgo instead of the one in the textbook.
+        /// </remarks>
         private System.Collections.Generic.IEnumerable<T> DepthFirst
         {
             get
