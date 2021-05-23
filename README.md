@@ -16,4 +16,4 @@ Given two predefined graphs, the program allows the user to perform depth-first 
 - [X] [5] Exit
 	- Keep on displaying the menu until the user chooses [5].
 - [X] Implement the Graph data structure using either an adjaceny matrix or **adjacency list**. Author's note: I'm choosing to do the latter implementation.
-- [ ] Record Voiceover
+- [X] Record Voiceover
